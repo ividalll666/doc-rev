@@ -1,0 +1,453 @@
+e/*
+    Pasta de Flexbox:
+
+    Introducão: Agora iremos aprender sobre a propriedade display:flex. A proprie
+    _dade display define como nossos elementos irão ser distribuidos e organizados
+    dentro de um container. Existem diversos tipos de displays, alguns não são mais
+    usados e conforme a necessidade de responsividade e melhor distribuicão, foram
+    sendo criados novos displays para facilitar nossa vida. Dentro dos displays mais
+    comuns usados hoje são: block, inline, flex e grid.
+
+    Não é de hoje que temos propriedades distintas dando, às vezes, o mesmo resultado.
+    O que faz usarmos mais uma que outra pode ser alguma adicão na facilitacão de re
+    _solucão de problemas, ou a funcão ser mais nova e atualizada, ou quem sabe, ela
+    apenas ser mais simples de usar. Durante muito tempo usamos a propriedade display
+    block ou inline-block para que um elemento ocupasse o espaco inteiro da página, 
+    ou fosse alinhado em colunas um do lado do outro.
+    
+    Com o passar do tempo foram adicionadas novos displays e a tendência é que esses
+    que eu expliquei caiam em desuso assim como foram com os antecessores deles, como
+    display: table por exemplo.
+
+    Esses displays são grid e flex. Neste documento você irá aprender mais sobre o
+    que é flexbox, como esse container se comporta, quais as funcão mais interessan
+    _tes dele e porque elas nos chamam atencão. Logo depois iremos estudar sobre o 
+    grid.
+
+    O display:flex é muito útil para nós quando se trata de responsividade. Com as
+    funcões grow e shrink, fica ainda mais fácil fazer com que o conteúdo se compor
+    _te de forma adaptativa. Pense, algo flexível é algo que pode além de diminuir, 
+    aumentar de acordo com nossa vontade. É exatamente nesse pensamento que vamos 
+    levar essa propriedade.
+ */
+
+/* reset */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* raiz */
+:root
+{
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+
+    --bg-color: #008080;
+
+    --cx-um: green;
+    --cx-dois: blue;
+    --cx-tres: red;
+
+    --cross-axis: purple;
+    --main-axis: orange;
+}
+
+/* config do container-box geral*/
+.container-box
+{
+    /* display flex: atributo que estamos aprendendo */
+    display: flex;
+
+/* 
+    define a direcão que o flexbox vai ficar: por default é row,
+    e não precisamos declará-la, mas estou explicitando para verem 
+    que essa propriedade existe e é assim que é definida por padrão.
+    
+    Em row, todos os elementos são organizados *um ao lado do outro*,
+    em "linha", como o nome diz. Se declararmos que a direcão será
+    "column", os elementos serão dispostos em coluna, ou seja, ficarão
+    *um embaixo do outro*.
+*/
+    flex-direction: row;
+
+    /* tamanho do container antes dele atingir o máximo */
+    width: 100%;
+    
+    /* tamanho máximo do container */
+    max-width: 900px;
+
+    /* alinhamento do container: podemos usar este margin para posicionar
+    containers que não pegar a largura total da página. ele ficará 0% de
+    cima/baixo e com espacamento dos lados automático. */
+    margin: 0 auto;
+
+    /* cores e margins */
+    background-color: white;
+    margin-top: 3%;
+}
+
+/* configs gerais: cada caixa terá essa especificidade  */
+
+/*
+    Flex:basis ou min-width?
+
+    Ambos são muitos parecidos, realmente. As duas propriedades definem um ta
+    _manho mínimo para determinado elemento. Mas vamos separar cada um em seu
+    lugar. Primeiramente, flex-basis só se encontra quando o container é um
+    flex-item, ou seja, filhos de um pai com a propriedade display:flex. Caso 
+    contrário, esta propriedade não será aplicada. 
+
+    Então vamos reparemos nas diferencas:
+
+    A propriedade flex-basis pode ser tanto min-width quanto min-height, depen
+    _dendo do flex-direction que está definido. Por exemplo, se tivermos um con
+    _tainer com em row, e definirmos:
+
+    min-width: 100px
+    flex-basis: 200px
+
+    o flex basis fará o papel de height, pois declaramos o width. E caso apagás
+    _semos o min-width, o flex-basis fará papel de width. Caso declaremos o Flex
+    -basis como auto, o container terá o tamanho mínimo do conteúdo caso não te
+    _nha uma propriedade especifica width/height definida. São realmente proprie
+    _dades muito parecidas, mas manteremos usando flex-basis por estar lidando
+    com flex-items.
+*/
+
+/* configuracão geral de todas as caixas */
+.box
+{
+    padding: 5%;
+
+    /* propriedade que define o tamanho mínimo do elemento */
+    flex-basis: 200px; 
+}
+
+/*
+    A propriedade flex-wrap: wrap:
+    
+    Por padrão, nosso flex container deve colocar os elementos um do lado do
+    outro, infinitamente. Isso é um problema quando se trata de um espaco deli
+    _mitado, pois, uma hora ou outra, esses elementos agrupados vão passar do 
+    limite de onde deveriam ficar. Mas isso não será problema mais com a propri
+    _edade flex-wrap: wrap.
+
+    Ao mudarmos o valor default de "nowrap" para wrap, toda vez que não houver
+    espaco para o item, o container efetuará uma quebra de linha automaticamente.
+    Sem dúvidas uma funcão muito útil. Mas como podemos ver, devemos ter cuidado
+    para não deixar espacos em branco estranhos, como acontece com o espacinho
+    ao lado da caixa roxa.
+*/
+
+
+
+.container1 
+{
+    /* propriedade que permite quebra de linha */
+    flex-wrap: wrap; 
+}
+
+/*
+    A propriedade flex-grow:
+
+    Sem dúvidas umas das mais úteis, ela configura os itens para crescerem conforme
+    o tamanho do container. Podemos aplicar em todos os itens com um valor de 1, pa
+    _ra que todos crescam nas mesmas proporcões ou podemos aplicar valores especifi
+    _cos em cada item para que ele cresca, por exemplo, 2 vezes ou mais do que outro.
+
+    Vamos aplicar para que todos os itens crescerem de forma igual.
+ */
+
+ /* subclasse-nome das caixas do segundo container */
+ .grow
+ {
+    flex-grow: 1;
+ }
+
+ /* Ou como eu disse, configurar que as caixas crescam em proporcões diferentes.*/
+
+ /* Com essa configuracão poderemos ver que o todos os item crescem para completar
+    o espaco mas que o do meio por ter um valor maior, cresce mais do que os outros
+    mesmo que eles ainda tenham um tamanho mínimo. Se comentarmos os outros dois com
+    valor menor, o item azul irá crescer ainda mais. Essa propriedade trabalha com a
+    ideia de proporcão.*/
+#grow1
+{
+    flex-grow: 1;
+}
+#grow2
+{
+    flex-grow: 4;
+}
+#grow3
+{
+    flex-grow: 1;
+}
+
+/*
+    A propriedade Flex-shrink:
+
+    Agora iremos ver uma propriedade que faz os elementos se comportarem de determina
+    _da forma quando a página diminui. Ela funciona basicamente como a grow, mas com 
+    ela definirmos qual a proporcão os elementos irão tomar quando a gente diminui 
+    tanto a página que não sobra mais espaco.
+*/
+
+/* sem muitos segredos, ela funciona de maneira parecida: */
+
+/* 
+    mudando o tamanho dos itens para eles completarem o container todo. Poderíamos usar
+    sim o flex-grow que acabamos de aprender, mas com um tamanho fixo, como o container 
+    não irá tentar esticar o item, é mais visivel. Mas aconselho, se quiser, fazer o 
+    teste para ver a diferenca.
+*/
+
+.shrink
+{
+    flex-basis: 300px;
+}
+
+/*
+    Diminua o tamanho do navegador (redimensione-o). Você verá que eventualmente
+    o item azul irá ficar proporcionalmente menor que os demais. Vale atentar que
+    enquanto o flex-grow multiplica o tamanho base, o flex-shrink divide. Ou seja, 
+    valores mais alto aqui, resultam em flex-items menores.
+ */
+
+#shrink2
+{
+    flex-shrink: 2;
+}
+
+/*
+    Porpriedade flex-direction: column
+
+    Esta propriedade como dita anteriormente, organiza os elementos de
+    dentro do container em forma de coluna, ou seja, um embaixo do outro.
+    Devemos prestar muita atencão no flex-basis ao "virar" o container, e
+    mudar sua direcão, pois, quando em coluna, o tamanho especificado nele
+    é equivalente ao height e não mais ao width. As coisas mudam um pouco 
+    quando estamos trabalhando com o container em pé. Elas em primeiro mo
+    _mento parecem ser um pouco mais confusas, mas pensando um pouco faz 
+    sentido, prometo.
+*/
+
+.container5
+{
+    flex-direction: column;
+}
+
+.column
+{
+    /* isso fará agora, que o container está com a direcão de coluna, com
+    que na nossa visualizacão o flex-basis valha como height */
+    flex-basis: 200px;
+}
+
+/* 
+    Essa propriedade é muito útil para alinhamento de diversos elementos e 
+    containers dentro de um setor(área) da página. Podemos ter então, o tão
+    almejado "alinhamento vertical". Além de algumas outras funcões interes
+    _santes de espacamento.
+*/
+
+.container6
+{
+/* 
+    primeiro vamos definir um espaco a mais para sobrar no container tanto 
+    em cima quanto embaixo. */
+    min-height:200px;
+/*  
+    Importantíssimo dizer que quando colocamos um container como display flex, ele
+    possui dois eixos. O eixo principal(main-axis), e o eixo x(cross-axis).
+    
+    O eixo principal, quando o container está deitado é a linha horizontal.
+    O eixo x, quando o container está deitado é uma linha vertical.
+
+    Logo, quando viramos o container, esses eixos viram juntos. Ou seja:
+
+    O eixo principal, quando o container está em pé(coluna) é uma linha horizontal.
+    O eixo x, quando o container está em pé(coluna) é uma linha vertical.
+
+    É de extrema importância entender isso pois pode ocorrer de tentar alinhar os 
+    elementos e não conseguir da forma que quer por conta do eixo estar diferente.
+    Ficou confuso? Não se preocupe que iremos ver no detalhe.
+
+    Para lidar com elementos no eixo principal (laranja), usamos justify.
+    Para lidar com elementos no eixo x(roxo), usamos align.
+
+    /* propriedade que veremos em breve */
+    grid-column:2/3;
+    grid-row:2/3 ;
+
+    /* eixo princial (main-axis) - linha laranja */
+    justify-content: center;
+
+    /* eixo x (cross-axis) - linha roxa */
+    align-items: center;
+
+    margin-top: 0%;
+}
+
+.esp
+{
+    max-height: 100px;
+    flex-basis: 5%;
+    padding: 3%;
+}
+
+.container7
+{
+    /* conteúdo que veremos em breve */
+    grid-column:2/3;
+    grid-row:2/3;
+    margin-top: 0%;
+
+    /* mudando a direcão do container para os itens ficarem em coluna */
+    flex-direction: column;
+
+    /* eixo principal (main axis) - linha laranja */
+    justify-content: center;
+
+    /* eixo x (cross axis) - linha roxa */
+    align-items: center;
+}
+
+/* 
+    Além disso, vale checar justify's/align's além do center, tais 
+    como space around, start, end, space-between e etc. São atributos 
+    interessantes e que ajudam a manipular o conteúdo.
+*/
+
+
+/* ---------------- abaixo terá configuracões que não lhe interessa ---------------- */
+
+
+body
+{
+    background-color: var(--bg-color) ;
+    color: white;
+}
+
+#titulo
+{
+    overflow: hidden;
+    max-width: 40%;
+
+    margin: 0em auto;
+}
+h1
+{
+    text-align: center;
+    margin-top: 3%;
+    font-size: 4rem;
+    padding-bottom: 3%;
+    margin-bottom:0;
+    box-shadow: 0px 5px 0px white;
+}
+
+h2
+{
+    text-align: center;
+    font-size: 3rem;
+}
+
+p
+{
+    text-align: center;
+    font-size: 2rem;
+
+    margin: 3% 0% 3% 0%;
+}
+
+#sub
+{
+    margin-top: -3%;
+    margin-bottom: 3%;
+
+    font-size: 1.3rem;
+}
+
+
+
+/* propriedades que veremos em breve */
+#grid1
+{
+    display: grid;
+    grid-template-columns: 50px 850px;
+    grid-template-rows: 50px 250px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+#cross
+{
+    /* matéria que veremos em breve: position */
+    grid-column: 1/2 ;
+    grid-row: 1/3;
+    background-color: var(--cross-axis);
+}
+
+#main
+{
+    /* matéria que veremos em breve: position */
+    grid-column: 1/3;
+    grid-row: 1/2;
+    background-color: var(--main-axis);
+}
+
+#grid2
+{
+    display: grid;
+    grid-template-columns: 50px 250px;
+    grid-template-rows: 50px 850px;
+    max-width: 300px;
+    max-height: 900px;
+    margin: 0 auto;
+    margin-bottom: 5%;
+}
+
+#mainColumn
+{
+    grid-column:1/2;
+    grid-row:1/3;
+
+    background-color: var(--main-axis);
+}
+
+#crossColumn
+{
+    grid-column:1/3;
+    grid-row:1/2;
+
+    background-color: var(--cross-axis);
+}
+
+/* config geral das caixas */
+.box1
+{
+    background-color: var(--cx-um);
+}
+
+.box2
+{
+    background-color: var(--cx-dois);
+}
+
+.box3
+{
+    background-color: var(--cx-tres);
+}
+
+.box4
+{
+    background-color: purple;
+}
+
+.box5
+{
+    background-color: yellow;
+}

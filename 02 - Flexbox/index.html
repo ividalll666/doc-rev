@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>estudo de flexbox</title>
+</head>
+<body>
+
+    <div id="titulo">
+        <h1> Estudo de Flexbox</h1>
+        <h2> Lidando com flex-items</h2>
+    </div>
+    <!-- container que estão as caixas -->
+
+        <p> Trabalhando com flex-wrap </p>
+
+        <div class="container-box container1">
+
+            <!-- caixas -->
+            <div class="box box1"></div>
+            <div class="box box2"></div>
+            <div class="box box3"></div>
+            <div class="box box4"></div>
+            <div class="box box5"></div> 
+
+        </div>
+
+        <p> Trabalhando com flex-grow </p>
+
+        <div class="container-box container2">
+
+            <!-- caixas -->
+            <div class="box box1 grow"></div>
+            <div class="box box2 grow"></div>
+            <div class="box box3 grow"></div>
+        </div>
+
+        <div class="container-box container3">
+
+            <!-- caixas -->
+            <div class="box box1" id="grow1"></div>
+            <div class="box box2" id="grow2"></div>
+            <div class="box box3" id="grow3"></div>
+        </div>
+
+        <p> Trabalhando com flex:shrink</p>
+        <p id="sub"> (diminua a página)</p>
+        <div class="container-box container4">
+
+            <!-- caixas -->
+            <div class="box box1 shrink" id="shrink1" ></div>
+            <div class="box box2 shrink" id="shrink2" ></div>
+            <div class="box box3 shrink" id="shrink3" ></div>
+        </div>
+
+        <p> Trabalhando com flex:column</p>
+        <div class="container-box container5">
+
+            <!-- caixas -->
+            <div class="box box1 column" ></div>
+            <div class="box box2 column" ></div>
+            <div class="box box3 column" ></div>
+        </div>
+        
+        <h2> Espacamento </h2>
+        <p>flex-direction: row</p>
+
+
+        <div id="grid1">
+
+            <span id="main"></span>
+            <span id="cross"> </span>
+
+            <div class="container-box container6">
+                <!-- caixas -->
+                <div class="box box1 esp"></div>
+                <div class="box box2 esp"></div>
+                <div class="box box3 esp"></div>
+            </div>
+
+        </div>
+
+
+        <p>flex-direction: column</p>
+        
+        <div id="grid2">
+
+            <span id="mainColumn"></span>
+            <span id="crossColumn"> </span>
+
+            <div class="container-box container7">
+                <!-- caixas -->
+                <div class="box box1 esp"></div>
+                <div class="box box2 esp"></div>
+                <div class="box box3 esp"></div>
+            </div>
+
+        </div>
+
+</body>
+</html>
