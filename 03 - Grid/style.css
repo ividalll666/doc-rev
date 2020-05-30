@@ -1,0 +1,292 @@
+/*  
+    Pasta de Grid:
+
+    Esse display é uma das propriedades mais recentes implementadas no CSS, sendo extremamente útil pa
+    _ra fazer layouts complexos. Muitos dizem que o Grid Layout mudará tanto a web e a forma de fazer 
+    os sites, que outras boas tecnologias como o flexbox será deixado de lado. Certamente dizer que es
+    _se sistema é bem evoluido e mudará muito nossa forma de fazer os sites não é exagero, mas posso 
+    _afirmar que não é uma propriedade de substituicão de outras propriedades, mas sim, de adicão. 
+
+    Ou seja, não iremos deixar de usar Flexbox, e sim, usá-la em conjunto. Conforme formos estudando 
+    iremos perceber onde é melhor aplicar um ou outro, e onde é mais prático aplicar cada um. Ambos, as
+    vezes, podem ter o mesmo resultado final, mas devemos escolher a opcão mais prática e funcional para
+    aquela ocasião.
+
+    Quando falarmos em Grid, iremos pensar em uma malha. Uma malha que possui linhas em pé e deitadas, e
+    conforme queremos posicionar um elemento vamos nos basear nesta malha para que ele seja ajustado. Ve
+    _jamos o exemplo 00 de um layout mais complexo.
+*/
+
+/* reset */
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* raiz */
+:root
+{
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* nossas cores */
+    --cor-primaria: #008080;
+    --cor-secundaria: white;
+    --cor-terciaria: black;
+}
+
+/* container que engloba tudo */
+#container-conteudo
+{
+    text-align: center;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+
+    padding: 3%;
+}
+
+/* titulo */
+#container-conteudo h1
+{
+    font-size: 4rem;
+}
+
+/* subtitulo */
+#container-conteudo p
+{
+    font-size: 3rem;
+}
+
+/* 
+    Configuracão geral de todos os grids: Como iremos trabalhar com diversos grids nesta página, vamos 
+    definir uma classe com a configuracão básica a ser aplicada em todas e depois vamos mudar chamando
+    o ID do elemento o que, especificamente deve ser alterado.  */
+.container-grid
+{
+    /* declaracão do display: devemos dizer a página que este container é um grid. */
+    display: grid;
+
+    /* espaco dentro do template: essa propriedade é útil para dar espacamento entre os 
+    elementos do grid-container. */
+    gap: 5px;
+
+    /* alinhamento do eixo-x: centralizacão do container na página */
+    margin: 5% auto;
+    padding: 5%;
+
+    /* tamanho base dele */
+    width: 80%;
+
+    /* cores */
+    background-color: var(--cor-secundaria);
+    color: var(--cor-secundaria);
+}
+
+/* configuracão de cada bloco(box) de dentro do container */
+.box
+{
+    padding: 3%;
+    text-align: justify;
+}
+
+/* Então definimos a malha */
+#grid-ex1
+{
+    /* distribuicão do container: sendo 1fr = 1 fracão. Medida boa para manter proporcionalidade dentro 
+    do container, independente do tamanho. Podemos usar outras medidas também, como %, px, em, rem e etc.,
+    mas gosto de usar essa medida fracionária porque afinal, estamos dividindo em fracões o container. */
+
+    /* definimos como o template grid em colunas irá se dividir: quero três colunas */
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* e como o template grid em linhas (deitadas) irá se dividir: quero 5 linhas */
+    grid-template-rows:    1fr 1fr 1fr 1fr 1fr;
+
+    height: 100%;
+
+}
+
+/* 
+    e depois iremos em cada elemento e e definiremos ONDE ele vai ficar na malha que acabamos de criar.
+    Pode dar um pouco mais de trabalho, mas o resultado fincal fica, como pode ver, bem interessante, 
+    com distribuicões que seria dificílimo fazer sem essa propriedade.
+*/
+
+/* abaixo estão como tudo está distribuido */
+#b1
+{
+    /* Falamos qual coluna esse elemento ira comecar/terminar */
+    grid-column: 1/3;
+    /* e falamos qual linha esse elemento irá comecar/terminar */
+    grid-row: 1/2;
+
+    background-color: blue;
+}
+
+/* Faremos isso em todos. */
+#b2
+{
+    grid-column:3/4;
+    grid-row: 1/3;
+
+    background-color: yellow;
+}
+
+#b3
+{
+    grid-column: 1/2;
+    grid-row: 2/4;
+
+    background-color: green
+}
+
+#b4
+{
+    grid-column:2/3;
+    grid-row: 2/3;
+
+    background-color: red;
+}
+
+#b5
+{
+    grid-column: 2/3;
+    grid-row: 3/6;
+
+    background-color: aqua;
+}
+
+#b6
+{
+    grid-column:3/4;
+    grid-row: 3/5;
+
+    background-color: blueviolet;
+}
+
+#b7
+{
+    grid-column: 1/2;
+    grid-row: 4/6;
+
+    background-color: turquoise;
+}
+
+#b8
+{
+    grid-column: 3/4;
+    grid-row: 5/6;
+
+    background-color: tomato;
+}
+
+/* 
+    Apesar de um pouco trabalhoso, é bem simples e podemos fazer coisas muito legais e responsivas, usan
+    _do as medidas certas e organizando de maneira correta. Para isso, devemos prestar atencão em alguns
+    detalhes para não termos problema de, por exmeplo, dois conteúdos ocuparem o mesmo espaco, ou não 
+    conseguir definir ao certo onde queremos que o elememento fique. Vamos ver tudo isso nos próximos e
+    _xemplos. */
+
+/* 
+    Como pode ver no navegador, podemos, como flexbox, colocar elementos ao lado do outro que respondem
+    bem ao tamanho da página.
+*/
+#grid-ex2
+{
+    /* não precisamos definir row se não vamos trabalhar com mais de uma linha */
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* 
+    Irei colocar cores genéricas, por conta disso, não declarei em variáveis porque o nível de complexida
+    _de da nossa página é baixo.
+ */
+#ex1
+{
+    grid-column: 1/2;
+    background-color: blue;
+}
+#ex2
+{
+    grid-column: 2/3;
+    background-color: chartreuse;
+}
+#ex3
+{
+    grid-column: 3/4;
+    background-color: darkgreen;
+}
+
+/*
+    Mas como pode ter percebido, apesar de dar um resultado praticamente igual ao que estudamos na pasta
+    anterior, é um pouco mais trabalhoso. Como eu disse na introducão, há casos que será melhor usar Flex
+    _box, e casos que será melhor usar Grid. Isso irá depender na complexidade do nosso layout e do que 
+    queremos fazer com ele. São tecnologias que devem trabalhar em conjunto.  
+*/
+
+/* 
+    Quero agora focar na contagem de rows/columns dos nossos displays grid. É muito, mas muito fácil con
+    _tar errado quando estamos no comeco do estudo com grid. Pois, ora, se declararmos no container: 
+
+    Grid-template-columns: 1fr 1fr 1fr;
+
+    Temos, logo, 3 colunas, certo?
+
+    Errado! Pois caso você esteja pensando assim, você não está levando em consideracão as colunas do co
+    _meco e do fim do container. Ficou confuso? Não se preocupe, vamos ver no detalhe para que tudo fique
+    mais claro.
+*/
+
+#grid-ex3
+{
+    /* Mesma divisão do exemplo acima */
+    Grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 0px;
+}
+
+.ex
+{
+    text-align: center;
+    background-color: darkgreen;
+}
+
+#ex4
+{
+    grid-column:1/2;
+
+    /* primeira coluna */
+    border-left: 5px solid red ;
+}
+#ex5
+{
+    grid-column:2/3;
+
+    /* segunda coluna */
+    border-left: 5px solid darkorange;
+
+
+}
+#ex6
+{
+    grid-column:3/4;
+
+    /* terceira coluna */
+    border-left: 5px solid orchid;
+
+    /* quarta coluna */
+    border-right: 5px solid darkturquoise;
+}
+
+/*
+    Quando se trata de grids mais complexos como o exemplo da introducão (00), é muito 
+    fácil se perder e acabar errando o número. Então tenhamos muito cuidado com a distribuicão
+    da nossa malha e dos nossos elementos, para acabar nem tendo linha/coluna a mais, e nem co
+    locando elemento no lugar errado ou não conseguindo colocar.
+
+    Na próxima aula/pasta iremos ver uma breve comparacão entre flexbox e grid, onde podemos usar
+    cada um, mais exemplos, manipulacão de foto no nosso grid/flexbox e em geral, então tem bastante
+    coisa para discutirmos ainda. 
+ */
