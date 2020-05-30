@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--
+        A importância da tag viewport:
+
+        Viewport é a área visível em um dispositivo. Nos celulares, quando não se tem uma página adaptada pro mobile
+        a tendência é que o navegador diminua todo o conteúdo da página para que ele se encaixe dentro da tela do 
+        dispositivo, o que ocaciona má legibilidade, por ter tirado o zoom nesse processo, além de ocasionar prováve
+        _is problemas em alguns setores no site.
+
+        Para tomar o controle do viewport e evitar que ele diminua o zoom da página, usaremos a tag viewport abaixo.
+        no atributo "content", devemos colocar a largura e a escala inicial, que será 1.0. Isso resolverá alguns pro
+        _blemas mas ocasionará outros: com uma página não pensada no mobile, tudo pode ficar uma confusão. Por conta
+        disso, iremos estudar algumas unidades, métodos, pseudo-elementos e configuracões para termos menos trabalho 
+        possível. 
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title> Formatacão </title>
+</head>
+<body>
+
+    <section class="container intro">
+
+        <h1> :Root e *: formatando a página </h1>
+
+        <p>
+            Todas as aulas (pastas) são importantes, mas creio que esta aqui, esteja em um grau de relevância maior.
+            Iremos ver aqui como podemos formatar a página para uma visualizacão minimamente aceitável. Aprenderemos
+            a importância de resetar a página, de usar o root, as diferentes medidas, meta viewport, etc., etc..
+        </p>
+
+        <!-- Para preenchermos a página o editor nos dá a possibilidade de usar latim, que é uma lingua morta, para 
+            apenas fazer um texto. Ele não tem sentido, e nem é para ter: lembrando que é apenas para termos conteú
+            _do para trabalhar nossa estilizacão.  -->
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet earum ut enim harum odit sequi deserunt do
+            loribus, sed totam neque reiciendis iste officia ipsa repellendus repellat pariatur, quaerat, modi delec
+            tus? Lorem ipsum dolor sitamet consectetur adipisicing elit. Placeat doloribus suscipit inventore quam m
+            llitia natus laboriosam dolores ipsam tempora,reprehenderit dolore eaque magnam dolorem maiores fugiat vi
+            tae vel distinctio enim!
+
+    </section>
+
+    <section class="container fonte">
+
+        <div id="em">
+
+            <p> Exemplo de "em" - Div pai - 16px </p>
+
+            <div id="camada1em">
+                <p>
+                    Div filha com 2em
+                </p>
+
+                <div id="camada2em">
+                    <p>
+                        Div filha da filha com .5em para ter o mesmo tamanho de antes
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="rem">
+
+            <p> Exemplo de "rem - :root com 1vw  </p>
+
+            <div id="camada1rem">
+                <p>
+                    Div filha com 2rem
+                </p>
+
+                <div id="camada2rem">
+                    <p>
+                          Div filha da filha com 2rem
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="container-box">
+
+        <div class="box" id="box1"> box-sizing: content-box</div>
+        <div class="box" id="box2"> box-sizing: border-box</div>
+            
+    </section>
+    
+</body>
+</html>

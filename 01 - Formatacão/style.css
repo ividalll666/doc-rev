@@ -1,0 +1,325 @@
+/* 
+    Pasta de formatacão:
+
+    Introducão:- como eu disse, iremos aprender a formatar a página e nos livrarmos 
+    de alguns problemas que com ela crua, temos. Vale salientar que, quando estamos
+    pensando em web hoje, estamos pensando em diferentes tamanhos de tela. Falamos 
+    de celulares grandes - e os ainda maiores - tablets, monitores HD, full HD, 2k,
+    4k e até mesmo, quem sabe, televisores. Ou seja, diferente de antigamente, o si
+    _te feito por nós acaba abrangendo inúmeros dispositivos cada um com suas carac
+    _terísticas. 
+
+    Hoje, quando fazermos um site devemos pensar em *responsividade*.
+
+    Devemos ter o cuidado para fazermos com que o nosso conteúdo fique minimamente 
+    ajustado nas diferentes telas que irão acessá-lo. Por conta disso, iremos apren
+    _der novas medidas que crescem cada vez mais e formam o novo padrão do css. Lo
+    _go iremos ver todas elas.
+    
+    Vamos comecar aprendendo o asterisco(*):
+
+    Ele serve para que as definicões sejam aplicadas a todos os elementos. Se repa
+    _rarmos bem a página possui um padding que não permite que os elementos fiquem 
+    encostados na borda. Isso é ruim porque conforme colocamos nossas divs/fotos/
+    etc na página, nem sempre queremos esse espacamento, então devemos tirá-lo. Es
+    _se é o primeiro motivo no qual devemos resetar a página.
+
+    O segundo motivo é para definirmos o box sizing dos elementos. Vamos entender me
+    _lhor depois, por enquanto iremos deixar essa propriedade comentada.
+*/
+
+*
+{
+    /* descomente aqui para tirar esse espacamento */
+
+    /* padding: 0;
+    margin: 0; */
+
+ /*  depois de ver as fonts, veremos porque essa propriedade é importante*/
+
+/*
+    box-sizing: border-box; 
+*/
+}
+
+/* 
+    O root é um elemento muito importante para nosso site como um todo. Nele podemos
+    definir variáveis com atributos definidos, definir o font-family a ser aplicado 
+    e a fonte. Sempre ao iniciarmos um css, seja qual for, a primeira coisa a se fazer
+    é resetar a página e definir o root.
+    
+    root é "raiz" em inglês. Pense que aqui será a raiz de todo o documento, onde depo
+    _is, dará estrutura aos elementos mais importantes da nossa página. Ele será a refe
+    _rência de algumas de nossas propriedades.
+
+    Veremos isso na prática.
+*/
+
+
+/* 
+    Declarando variáveis: sua importância:
+
+    Imagine que você usou uma cor específica em um lugar muito específico no seu site, 
+    e quer usar de novo em outro lugar. Você teria que procurar o código todo, o que é
+    ruim, certo? Ou você quer deixar uma cor que possivelmente vá usar, guardada, para 
+    que possa tê-la como opcão.Vai ter que deixá-la comentada solta, o que ruim também,
+    concorda? E imagine quem sabe, se pudesse deixar um font-size definido para toda a 
+    pagina e quem sabe, mudar de acordo com a necessidade, seria ótimo, assim você não 
+    precisaria mudar a cada elemento de texto adicionado..
+
+    Pois bem, é no :root que a magia acontece.
+    
+    Podemos jogar qualquer valor dentro de uma variável, e declaramos ela desta forma:
+
+    --nome: valor ;
+
+    exemplo:
+
+    --cor-primaria: #fff;
+    --padding-padrao: 2%;
+
+    e chamamos usando a propriedade var desta forma:
+
+    background-color: var(--cor-primaria);
+    padding: var(--padding-padrao);
+
+    É útil também porque caso precisemos mudar a cor de tudo, ou a fonte, ou o padding, 
+    ou qualquer coisa, podemos mudar em um lugar só. Eu uso variáveis mais para definir
+    a paleta de cores que estou usando na página.
+
+    * vs :root, mas qual a diferenca?
+
+    Sim, ambos são muito parecidos, mas lembre: o * serve para resetar a página, o :root
+    para definir alguns parâmetros. Por mais que eles algumas vezes possam fazer a mesma
+    coisa, não confunda!
+*/
+
+/*
+    Medidas e suas confusões:
+
+    A quantidade de medidas que temos para lidar não são poucas e o assunto é bem complexo.
+    Mas não se preocupe, iremos lidar com isso da forma mais simples possível, e irei expli
+    _car quando eu uso cada medida, ou se eu uso,e porque eu não uso. Vamos por partes. 
+
+    Temos diversas, mas as mais usadas e faceis de ver são: Em, Rem, Px, Pt, %, fr, vh e vw.
+
+    Podemos separá-las em dois grupos: as responsivas e as não responsivas.
+
+    Consideramos Px, pt e, se tratando de font-size, %, unidades fixas (não responsivas), e 
+    que possuem tamanho definido independente do tamanho da página. Ou seja, se colocarmos 
+    um font-size de 24px, embora em uma tela full HD de desktop pareca ter um tamanho aceitá
+    _vel, conforme formos diminuindo o tamanho desta tela, apesar do espaco diminuir, a fon
+    _te continuará do mesmo tamanho ocasionando problemas para visualizacão mobile, por exem
+    _plo, tendo que reescrever diversos lugares novamente. Isso é bem ruim tratando de prati
+    _cidade.
+
+    E consideramos, vw, vh, em, rem, fr e % unidades de tamanho variável, que se ajustam con
+    _forme dadas algumas informacões sobre a página. Sendo vw e vh, respectivamente, view wi
+    _dth e view height, excelentes medidas que são escalonáveis de acordo com o viewport (ex
+    _plicacão no HTML) da página.
+
+    Eu pessoalmente uso % para elementos como padding, margin, gap, dentre outras propriedades
+    focadas em espacamento ou tamanho. Assim, sempre, ao redimensionar a página, o elemento se
+    rearranjará para ocupar um mesmo lugar em relacão a nova proporcão de espaco que se tem. E
+    uso medidas fixas em momentos específicos que não irá mudar no fluxo do documento, como em
+    propriedades de borda, por exmeplo. Fr iremos ver mais quando estudarmos sobre os diferen
+    _tes displays, especificamente o grid. Para adiantar, Fr significa Fracional Unit. Teremos 
+    então, em, medida muito popular, mas que eu não costumo usar. "Em" recalcula o tamanho to
+    _mando como referência a div pai anterior. Isso é um pouco problemático, já que "em"s igua
+    _is podem gerar resultados diferentes. Se uma div pai tem 16px, uma div filha com 2em terá
+    o dobro, 32px, e uma terceira div filha terá com 2em, 64px. Então teriámos que recalcular 
+    as filhas quando uma div pai possui muitas divs filhas. Tudo ficará mais claro nos exemplos.
+
+    Isso acaba não sendo muito prático, então eu opto por usar rem em conjunto com vw. Rem, ao
+    invés de pegar como base as divs pai, ela pegará como base o font-size do :root, seja ele 
+    qual for, e como vw é uma medida que toma como princípio o tamanho da página e seu viewport,
+    é uma medida proporpcional. 1vw são aproximadamente 16px. Ou seja, uma página com 1vw terá 
+    como base 16px, e diminuindo ou aumentando o tamanho dela, serão 16px proprocionais ao seu 
+    tamanho final. E para aumentarmos o tamanho das letras conforme seja necessários, multipli
+    _camos com Rem, para termos uma fonte resposnsiva.
+
+    Iremos ver tudo na prática:
+*/
+
+/* raiz */
+:root
+{
+    /* fonte que será aplicada a tudo no documento */
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* declaracão das variáveis de cor*/
+    --cor-fundo: #008080;
+    --cor-secundaria: #015f5f;
+    --cor-terciaria: #004242;
+    --cor-letra: #fff;    
+    
+
+    /* font-size base pro rem */
+    font-size: 1vw; 
+    
+}
+
+/* Configuracão dos containers para melhor didática */
+.container
+{
+    text-align: center;
+    background-color: var(--cor-fundo);
+    color: var(--cor-letra);
+
+    margin: 5%;
+    padding: 1%;
+
+    /* propriedade que faz a borda arredondar */
+    border-radius: 15px;
+}
+
+.fonte
+{
+    /* propriedade que veremos em breve */
+    display: flex;
+
+    justify-content: space-evenly;
+}
+
+.fonte p
+{
+    text-align: left;
+}
+
+.intro
+{
+    font-size: 2.5rem;
+}
+
+.container p
+{
+    margin-top: 2%;
+    text-align: justify;
+}
+
+/* Exemplificacão  do font-size com em  */
+#em
+{
+    font-size: 16px;
+}
+
+#camada1em
+{
+    /* agora temos 5 * 16px: 64px */
+    font-size: 4em;
+    background-color:var(--cor-secundaria);
+}
+
+#camada2em
+{
+    /* O outro tamanho estava bom para leitura de desktop, mas para um texto corrido imagine
+    que deveríamos diminuir o tamanho da letra. Devemos multiplicar por um número quebrado pa
+    _ra termos algo menor do que temos agora. 64px * 3: 19px aproximadamente.
+    
+    Trabalhoso. Definitivamente não queremos isso.*/
+    font-size: .3em;
+    background-color: var(--cor-terciaria);
+}
+
+    /* Diminua o tamanho da aba do navegador e note que mesmo dimninuindo a página, as letras 
+    continuam de tamanho fixo. O que é ruim. Isso acontece com todas aquelas medidas fixas e 
+    essa, tem esse problema chatinho. */
+
+    /* agora iremos ver o rem, e ele, como pode ter percebido, diminui e aumenta proporcional
+    _mente com o tamanho da página. Note também, que por eu ter colocado % na margin e no 
+    padding, a página sempre deixa com o mesmo espacamento independente da largura. */
+
+
+
+#rem
+{
+    /* o root já está definido com 1vw, esse parágrafo terá 1 * 16px: 16px aproximadamente */
+    font-size: 1rem;
+
+    /* propriedade que veremos em breve */
+    grid-column: 2/3;
+
+}
+
+#camada1rem
+{
+    background-color:var(--cor-secundaria);
+
+    /* agora esse parágrafo terá 64px aprox. */
+    font-size: 4rem;
+}
+
+#camada2rem
+{
+    /* e esse parágrafo não precisa de ajuste agorá terá o valor original, sem contas.  */
+    font-size: 1rem;
+
+    background-color: var(--cor-terciaria);
+
+}
+
+/*
+    Por conta disso usar fontes responsivas como rem, vw, wh e % são de profunda importância para
+    um layout adaptativo para todos os dispositivos. Te garanto, essas medidas facilitam bastante,
+    mas não são tudo. Como podemos ver, a ultima div ficou ruim de ler. Certamente você terá que 
+    reescrever uma coisa ou outra com Media querys - matéria que iremos aprender mais para frente
+    - mas com um código bem escrito, a única coisa que terá de mudar são alguns tamanhos aqui e 
+    ali, e não o código todo.
+*/
+
+/* ---------------------- BOX SIZING -------------------------- */
+
+.container-box
+{
+    background-color: var(--cor-fundo);
+    min-height: 300px;
+
+    color: white;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 5%;
+}
+
+.box
+{
+    width: 50%;
+    height: 150px;
+    padding: 2%;
+}
+
+
+#box1
+{
+    background-color: var(--cor-secundaria);
+    border-right: 3px solid red;
+
+    /* box sizing padrão, apenas explicitei */
+    box-sizing: content-box;
+}
+
+#box2
+{
+    background-color: var(--cor-terciaria);
+    border-right: 3px solid red;
+    
+    /* box sizing que eu mudo no asterisco, veremos a importância dele */
+    box-sizing: border-box;
+}
+
+/*
+    Como pode ver, apesar de ambas as caixas estarem configuradas para ocupar metade da pá
+    _gina (width: 50%), porém a caixa de cima está gravemente deslocada para direita.
+
+   Então te pergunto: qual caixa está a 50%?
+   
+   A resposta é: as duas. Isso acontece porque por padrão, um container no css, por comple
+   _to, é definido tendo conteudo > padding > margin. Ou seja, no content-box, serão 
+   50% (width) + 2% (padding que demos) + os 3px de borda adicionado. 
+   
+   Já no border-box, o container ocupará 50% da parte indicada, e dentro destes 50%, está 
+   a borda com 3px e o padding com 2%. Então no resultado final, as coisas tendem a pegar 
+   mais espaco do que deveria, como pode ver.
+
+   Então sempre que comecar uma página, resete ela com, também, essa propriedade.
+*/
