@@ -1,0 +1,201 @@
+/* 
+    Flexbox x Grid: Quando usar?
+
+    Agora que já estamos familiarizados com as duas propriedades, floresce a dúvida de qual
+    tecnologia usar. A resposta é bem simples: as duas. Ambas tem seu valor e você pode usá
+    _las em conjunto para conseguir uma página completa. Enquanto o Grid serve para arrumar 
+    elementos em um layout complexo, onde os elementos não estão alinhados, assim como acon
+    _tece no nosso exemplo, Flexbox é perfeito para quando queremos arrumar tudo em uma li
+    _nha - ou várias - de modo nivelado. Ambos tem seu propósito, vão se comportar de manei
+    _ras distintas, mas vão nos dar excelentes resultados. Seja quem for, é extremamente im
+    _portante o estudo de ambos para que consigamos o melhor resultado possível.
+    
+    Vamos ver os exemplos.
+*/
+
+/* reset */
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* raiz */
+:root
+{
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+
+    --cor-primaria: #008080;
+    --cor-secundaria: #ffffff;
+}
+
+/* configuracão de todo o conteúdo */
+#container-conteudo
+{
+    text-align: center;
+    color: var(--cor-secundaria);
+    background-color: var(--cor-primaria);
+    padding: 3% 0 3% 0;
+}
+
+#container-conteudo h1
+{
+    font-size: 4rem;
+}
+
+#container-conteudo p
+{
+    font-size: 2.5rem;
+    margin: 3% 0 3% 0;
+}
+
+/* ------------------------------ */
+
+/* configuracão da nossa galeria em grid */
+#grid
+{
+    /* declaracão do container */
+    display: grid;
+
+    /* distribuicão do container: sendo 1fr = 1 fracão */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows:    1fr 1fr 1fr;
+
+    /* espaco dentro do template */
+    gap: 1%;
+
+    /* alinhamento do eixo-x/espacamento */
+    margin: 0 auto;
+
+    padding: 3%;
+
+    /* largura máxima que o container pode chegar */
+    max-width: 900px;
+
+    background-color: var(--cor-secundaria);
+
+}
+
+
+/* abaixo estão como tudo está distribuido */
+/* Tulipas */
+#b1
+{
+    grid-column: 1/3;
+
+}
+
+/* pinguins */
+#b2
+{
+    grid-column: 3/4;
+    grid-row: 1/3;
+}
+
+/* koala */
+#b3
+{
+    grid-column: 4/5;
+    grid-row: 1/2;
+}
+
+/* Agua viva */
+#b4
+{
+    grid-column: 4/5;
+    grid-row: 2/4;
+}
+
+/* Flores */
+#b5
+{
+    grid-column: 2/4;
+    grid-row: 3/4;
+}
+
+/* flores vermelhas */
+#b6
+{
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+/* deserto */
+#b7
+{
+    grid-column:1/3;
+    grid-row:2/3;
+}
+
+/* agora vejamos como fica essa galeria com as mesmas fotos */
+#container-flex
+{
+    display: flex;
+
+    /* quebra de linha */
+    flex-wrap: wrap;
+
+
+    /* centralizacão */
+    margin: 0 auto;
+    padding: 3%;
+
+    max-width: 900px;
+
+    background-color: var(--cor-secundaria);
+
+}
+
+/* div das imagens do flexbox */
+.flex
+{
+    flex-basis: 225px;
+    flex-grow: 1;
+    margin: 1%;
+}
+
+/* 
+    Como pode ver, no flexbox nomeando uma classe para todos os flex-items já resolvemos 
+    nossa distribuicão no nosso container, fazendo as fotos preencherem todo o espaco, ha
+    _vendo quebra de linha quando ele acaba, independente do tamanho da página. Porém, a
+    distribuicão dos items é mais linear, não possibilitando que as fotos preencham dife
+    _rentes espacos de forma vertical dentro do container. Essa outra distribuicão mais 
+    complexa e mais bonita, ao meu ver, é possível facilmente com o display grid, apesar 
+    dele ser mais trabalhoso de lidar.
+
+    Chamo atencão também para a maneira que ambos se comportam ao diminuir a tela.
+*/
+
+
+/* 
+    Redimensionamento das fotos: Para que as fotos não sejam dispostas na tela com o tamanho
+    original, devemos colocar ou um tamanho específico, ou dizer que elas devem ocupar o es
+    _paco total apenas do container, colocando 100%. Lembrando que devemos colocar tanto no 
+    width quanto no height. 
+
+    A outra propriedade afirma que, caso a imagem esteja em um espaco de proporcão diferente,
+    a imagem dará zoom para continnuar com a mesma proporcão. Isso evitará que a imagem enco
+    _lha apenas nas bordas quando o espaco que ele ocupa tiver a altura mas não largura que
+    ela precisa. Usar fotos com menos resolucão afetará a qualidade de imagem, então cuidado
+    onde e como você irá colocar a imagem no seu site. Uma foto com uma quantidade de pixeis
+    muito grande, como uma foto em 4K, por exemplo, é excelente ao dar zoom e manter a quali
+    _dade, porém ela vai fazer o site demorar a carregar a foto, por ela ser mais pesada, e 
+    uma foto com uma qualidade inferior como 360p pode carregar praticamente instantâneamente
+    com a página inteira, mas se tiver que dar zoom, ou mostrar a foto em um container grande,
+    certamente ela ficará pixelada e com qualidade ruim. Tome cuidado ao lidar com fotos, fique
+    no meio termo entre uma boa qualidade mas com uma exigência de armazenamento não tão grande.
+    Fotos entre HD e Full HD normalmente dão conta do recado.
+
+    ;D
+*/
+img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
