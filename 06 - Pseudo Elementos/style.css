@@ -1,0 +1,230 @@
+/* 
+    Pasta sobre Pseudo-elementos:
+
+    Os pseudo elementos são muito usados para criar um comportamento específico quando
+    determinada acão ocorrer. Temos, por exemplo: Hover, before, focus, active, visited
+    e muito mais. Podemos mudar a cor de um link vistado com (:visited), mudar a cor de
+    uma searchbar com :focus, fazer uma imagem expandir quando o mouse estiver em cima 
+    dela (:hover) ou criar algumas animacões em conjunto com o :before. Esse são alguns 
+    exemplos do que podemos fazer com os pseudo-elementos: Eles servem para criar peque
+    _nas interacões entre o usuário e a página. Veremos alguns exemplos.  
+*/
+
+/* reset */
+*
+{
+    box-sizing: border-box;
+    padding: 0em;
+    margin: 0em;
+}
+
+/* raiz */
+:root
+{
+    font-size: 1vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* alinhamento de itens */
+#container-conteudo
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+
+    padding-top: 5%;
+
+    background-color: #008080;
+    color: white;
+}
+
+.flex-title
+{
+    font-size: 3.5rem;
+}
+
+/* configuracão geral dos containers com exemplo */
+.exemplo
+{
+    max-width: 900px;
+    width: 100%;
+    background-color: white;
+    margin: 3% 0 3% 0;
+    padding: 3%;
+    font-size: 2rem;
+    color: black;
+}
+
+.desc
+{
+    margin-bottom: 5%;
+}
+
+/*
+    O que queremos fazer?
+
+    Queremos que a barra aumente de tamanho e mude a sua cor assim que eu clicá-la. 
+    Ela deve ter uma transicão suave entre os dois estados.
+ */
+
+/* configuracão da input */
+#ex1
+{
+    width: 30%;
+    padding: 3%;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid black;
+    
+    /* arredondamento de bordas */
+    border-radius: 20px;
+    /* transicão do estado atual pro próximo e vice versa */
+    transition: .5s;
+}
+
+/* 
+    Próximo estado: quando clicarmos para digitar, o que esse container deve fazer: queremos que ele 
+    mude sua cor de fundo e cresca um pouco.     
+*/
+#ex1:focus
+{
+    background-color: #008080;
+    width: 70%;
+    color: white;
+
+}
+
+/* ------------ próximo exemplo ----------- */
+
+/*
+    O que queremos fazer?
+
+    Queremos que quando o mouse estiver no link, ele mude de cor
+    tendo mais uma sinalizacão de que ele é um link.
+ */
+
+.links
+{
+    text-align: center;
+}
+
+.link
+{
+    color: black;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.link:hover
+{
+    color: red;
+    text-decoration: underline;
+
+}
+
+
+/* ------------------------------------------------------------------- */
+
+/* 
+    O que queremos fazer?
+
+    Como pode ver na página, qando o mouse passa pelo botão, temos uma animacão de um fundo esmeralda
+    descendo e a cor do que está escrito mudando. Vamos entender melhor o que está acontecendo:
+
+    Antes do botão temos um quadrado (o esmeralda) esperando para descer. Esse quadrado está ocultado 
+    pois está além dos limites do botão. Quando passamos o mouse, esse quadrado é deslocado para preenchimento 
+    do botão. Ou seja, seu comportamento estará vinculado ao botão, pois é em referência a ele que este 
+    quadrado deve se mexer.
+
+    Agora iremos ver isso na prática:
+
+*/
+
+.bfr
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+/* botão config */
+.btn
+{
+    padding: 2% 5% 2% 5% ;
+    font-size: .8rem;
+
+    background: none;
+
+    border: 1px solid black;
+
+    color: black;
+
+    /* propriedade que especifica que o que iremos usar é a duracão da animacão */
+    transition: .5s;
+
+    /* define que a referencia será o botão: usaremos a posicão que aprendemos */
+    position: relative;
+
+    /* define o comportamento do conteúdo fora do container: 
+    tudo o que estiver fora dos limites do botão será oculto (hidden) */
+    overflow: hidden;
+
+    width: 100%;
+
+    cursor: pointer;
+
+}
+
+/* pseudo-elemento "before" que define o elemnto decorativo ao nosso botão: aqui 
+    iremos definir nosso elemento. Before na maioria das vezes é usado para 
+    criar esses elementos de estilizacão.
+ */
+.btn:before
+{
+    /* especifica que esse elemento deve ser preenchido */
+    content: '';
+
+    background-color: white;
+
+    /* define a posicão a qual o container irá se posicionar */
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    /* define o tamanho inicial do container */
+    width: 100%;
+
+    /* aqui iremos definir que ele não tenha altura antes de passarmos o mouse em cima. */
+    height: 0%;
+
+    /* aqui iremos definir quanto tempo demora para que essa mudanca de estado ocorra. */
+    transition:.5s;
+}
+
+/* define o que vai acontecer com o elemento criado no before, quando o botão tiver em hover (com o mouse em cima) */
+.btn:hover:before
+{
+    /* então, quando isso acontecer, a altura do botão irá ser 100%, preenchendo o botão. */
+    height: 100%;
+    /* define o comportamento do mouse ao passar no container */
+    cursor: pointer;
+    background-color: teal;
+    
+    /* define a posicão do eixo z no container: aqui iremos definir que o quadrado esmeralda
+    não fique na frente do que está escrito dentro do botão. */
+    z-index: -1;
+}
+
+/* define o que o botão fará em hover */
+.btn:hover
+{
+    /* aqui asseguramos que o que está escrito no botão dê para ler */
+    z-index: 1;
+    color: white;
+}
+/* 
+    sinta-se livre para remover propriedades e ver a diferenca que dá. As vezes só entendemos mesmo
+    quando não se tem a propriedade definida, para sentir a falta dela.
+*/
