@@ -1,0 +1,124 @@
+/*
+    Pasta sobre position:
+
+    Cada elemento inserido na página possui um determinado tipo de position. Mudamos sua 
+    especificidade para podermos alinhar, mover ou definir o elemento. Iremos ver as posi
+    _tions mais importantes: static, absolute, relative.
+
+    Basicamente a diferenca entre elas é por qual ponto de referência o container irá se 
+    posicionar. No position static, definido por padrão, o (os) containers se posicionam
+    de acordo com o fluxo de ordem posto no HTML, ou seja, um embaixo do outro. Com o po
+    _sition Relative, aquele container passa a aceitar as propriedades Top, Left, Right 
+    e bottom, que facilita no deslocamento do container. Geralmente é usada em conjunto
+    com o Position Absolute, e este, que define que aquele elemento se destacará do fluxo
+    padrão, e será posicionado de acordo com o container pai com a definicão diferente 
+    de position static. 
+
+    Não se preocupe em entender agora, iremos ver exemplos.
+*/
+
+
+/* reset da página */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*  raiz do documento */
+:root
+{
+    font-size: 1vw;
+}
+
+h1
+{
+    margin-top: 3%;
+    text-align: center;
+}
+
+/*  config do container */
+#container
+{
+    display: flex;
+
+    margin-top: 5%;
+
+    /* cor para sabermos onde está o container */
+    background-color: yellow;
+
+    /* space-evenly/around é um atributo que dá espacos entre os elementos */
+    justify-content: space-around;
+}
+
+/* config das caixas principais roxas */
+.box
+{
+    width: 25%;
+    padding: 5%;
+    text-align: center;
+    color: white;
+    font-size: .6rem;
+    background-color: purple;
+}
+
+
+/* config da caixa roxa */
+#box1
+{
+    /* position padrão: todo elemento inserido na página possui esta especificacão. Isso quer
+       dizer que os elementos serão colocados na página conforme inseridos no documento HTML.
+       Aqui nós declaramos explicitamente para que possamos ver, no código a diferenca. */
+    position: static;
+}
+
+#box2
+{
+    /* position relativa: define que o elemento e sua posicão será relativa ao container pai
+    acima. Usa-se em conjunto com a position: absolute para manipular elementos em um determi
+    _nado espaco de uma forma mais simples. */
+    position: relative;
+}
+
+/* config geral das caixas verdes */
+.subbox
+{
+    padding: 5%;
+    background-color: green;   
+}
+
+
+/* config da caixa verde n1 */
+#subbox1
+{
+    /* position absoluta: define que o elemento irá se posicionar com referencia ao elemento pai
+       da página toda, ou seja, o body, ou ao elemento pai que possuir a position diferente de 
+       static. Podemos usar as propriedades Right, left, top e bottom para definir a origem do po
+       _sicionamento. */
+    position: absolute;
+
+    bottom: 0;
+}
+
+/* caixa verde n2 */
+#subbox2
+{
+    position: absolute;
+
+    /* propriedade que diz a origem do posicionamento */
+    left: -20%;
+    top: -20%;
+}
+
+/* Nesta página podemos ver que a caixa verde da esquerda está posicionada dentro 0% de distância
+   do "chão" do seu container pai. E como o último container pai é o body, ele fica no final da nos
+   _sa página. Por outro lado, a segunda caixa está definida para sair a esquerda do container pai
+   (left:-20%) e para sair acima do container pai (top: -20%). Como o container da caixa roxa está 
+   definido como position: relative, a nossa caixa verde da direita toma como referência a caixa roxa.
+   
+   Lembrando: 
+   
+   Elemento irá se posicionar com referencia ao elemento pai da página toda, ou seja, body, ou ao ele
+   _mento pai que possuir a position diferente de static. Assim podemos posicionar facilmente a caixa
+   verde ao redor/dentro da caixa roxa. Facilita bastante.*/
