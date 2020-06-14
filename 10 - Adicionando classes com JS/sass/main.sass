@@ -1,0 +1,87 @@
+// Reset da página
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+// Declaracão das variáveis: no SASS, não podemos declarar as variáveis no root
+$font:  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+$color-primary: #008080
+$color-secondary: #009090
+
+// E no SASS, você deve especificar "html" antes do root para não haver problemas de compilacão
+html:root
+    font-family: $font
+    font-size: 1vw
+
+// keyframes para animar a entrada e a saida do dropdown
+@keyframes dropdownshow
+    0%
+        opacity: 0
+        transform: translateY(-20%)
+
+    100%
+        opacity: 1
+        transform: translateY(0%)
+
+@keyframes dropdownclose
+    0%
+        opacity: 1
+        transform: translateY(0%)
+    100%
+        opacity: 0
+        transform: translateY(-20%)
+
+// configuracão da navbar 
+.navbar
+    justify-content: space-evenly
+    list-style: none
+    display: flex
+    background-color: $color-primary
+    color: white
+
+    // configuracão de cada item
+    .navbar-item
+        margin: 1%
+        padding: 1%
+        background-color: $color-secondary
+        text-align: center
+        width: 15%
+        text-transform: uppercase
+        font-family: $font
+        position: relative
+        font-size: 1.2rem
+        transition: .2s
+
+    .navbar-item:hover
+        cursor: pointer
+        background: white
+        color:  $color-primary
+
+    // configuracão do dropdown
+    .dropdown
+        list-style: none
+        position: absolute
+        top: 120%
+        width: 100%
+        left: 0
+        background-color: $color-secondary
+        opacity: 0
+        display: none
+        color: white
+        z-index: -1
+
+        // configuracão do item do dropdown
+        .dropdown-item
+            padding: 5%
+            transition: .2s
+
+        .dropdown-item:hover
+            background-color: $color-primary
+
+    // as duas classes que chamam os keyframes para podermos ter 
+    .dropdown-openned
+        animation: dropdownshow 500ms forwards
+
+    .dropdown-closed
+        animation: dropdownclose 500ms forwards

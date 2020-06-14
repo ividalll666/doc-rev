@@ -1,0 +1,47 @@
+// comecaremos importando tudo o que podemos do outro documento:
+// mixins, variáveis e funcões. Usamos o @import/@use.
+@import 'main'
+
+// Agora iremos ver a diferenca do mixin para o placeholder. No 
+// mixin podemos passar variáveis para dentro das propriedades
+// caso queiramos modificar aquela funcão. Por exemplo: na funcão
+// "containerStyle" que está vindo do outro documento, temos duas
+// coisas; cor do funco e a cor da letra. Por padrão, eu coloquei
+// que a cor do fundo fosse a cor que especificamos na variavel de
+// "color-primary" e a cor da letra a cor que colocamos na variável
+// "color-secondary". 
+
+// containerStyle($bg: $color-primary, $letter: $color-secondary)
+
+// Agora, a minha vontade é de mudar apenas a cor de fundo, e manter
+// o restante igualzinho ao que está no mixin - nossa funcão. É bem
+// simples: passamos o nome que colocamos como representacão da cor
+// com a nova cor que queremos. Então passamos $bg - representacão 
+// da cor do fundo (background) : e a nossa cor (azul).
+
+// Bem simples, assim acabamos de definir toda a formatacão e a mu
+// _danca com apenas 1 linha de código, e ainda por cima, em documen
+// _tos diferentes. Todo o Formatting, e o ContainerStyle será apli
+// _cado ao outro container. Caso mude algo no container que os mixins
+// e os placeholders estão, não se esquecer de atualizar os outros docu
+// _mentos. Sei que parece óbvio, mas esquecemos.
+
+// Com o placeholder, perdemos esse poder de mudar as as propriedades
+// de forma rápida. Em termos de desempenho, usar placeholder acaba sendo
+// melhor, pois quando formos ver o documento css convertido, acaba não tendo
+// muitas vezes a duplicacão de código que um mixin pode gerar. Ambos são bons
+// o que mudará é a ocasião usada.
+
+.area1
+    @include containerStyle($bg: blue)
+    @extend %formatting
+
+// "Para que eu vou precisar de dois documentos para estilizar a mesma página?"
+
+// Se você pensou isso, pensou pequeno. Você pode, agora sem repetir o root todo, 
+// como antes, ter as mesmas variáveis e funcões que você já definiu em uma parte
+// de um SASS anterior. Pode ser que sua página esteja muito grande e você queira
+// fragmentá-la, ou esteja fazendo diversas páginas e ao invés de ter que escrever vá
+// _rias linhas de novo para colocar aquele container alinhado dos lados, em cima e etc
+// você pode apenas chamar um placeholder, por exemplo. Muitas possibilidades e o 
+// melhor, usando apenas SASS - que nada mais é CSS. 

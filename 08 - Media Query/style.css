@@ -1,0 +1,82 @@
+/* reset */
+*
+{
+    padding: 0em;
+    margin: 0em;
+    box-sizing: border-box;
+}
+/* raiz */
+:root
+{
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* abaixo serão aplicados as formatacões para os respectivos elementos, normal.
+    Mas se diminuirmos a página para visualizacão pro celular, a letra ficará desproporcionalmente
+    pequena, ou seja, teremos que ajeitar. */
+
+#container-conteudo
+{
+    background-color: teal;
+    color: white;
+    text-align: justify;
+    padding: 5%;
+}
+
+#container-conteudo h1
+{
+    text-align: center;
+    margin-bottom: 2%;
+    font-size: 3.8rem;
+}
+
+#container-conteudo p
+{
+    font-size: 1rem;
+    margin-bottom: 1%;
+}
+
+/*  Podemos ajeitar facilmente com Media Querys, ela nos dá a oportunidade
+    de reescrever o estilo e mudar somente o necessário. Uma folha de estilo 
+    bem escrita faz com que a visualizacão em praticamente qualquer coisa seja
+    bem vista, precisando de pequenos ajustes em dispositivos móveis ou tablets.
+    
+    Quando se faz um css desleixado, sem prestar atencão em tudo, esses ajustes serão bem trabalhosos
+    podendo até levar a reescritura quase que completa da formatacão da página. Por 
+    conta disso, devemos usar propriedades responsivas e de fácil formatacão, mesmo
+    que elas tenham uma curva de aprendizado maior por ter mais 'sub-propriedades'.
+    
+    Como definimos no :root um view width de 1, e depois multiplicamos esse tamanho pela medida Rem, 
+    o tamanho ficou proporcional independente do tamanho da página, isso é bom até antes de chegar nos mobiles,
+    já que o mobile as telas são pequenas demais, tornando as letras pequenas demais. 
+    
+    Temos duas opcões: ou re-multiplicamos os parágrafos com uma nova medida(parte comentada)
+    ou aumentamos o vw do root, criando um novo root. Definimos o @media, e as especificacões
+    de onde devem ser aplicado essas novas configuracões. Normalmente os celulares possuem tamanho menor de 600px.
+    
+    Aumentando o font-size do :root, ele pegará esse novo vw definido e aplicará nas configuracões anteriores, de cada parágrafo.
+    Antes, o H1 possuia um tamanho de 3.8em * 1vw. Agora o mesmo parágrafo tem o tamanho de 3.8em * por 3.8vw.
+    
+    Media querys praticamnete sempre serão usadas, mesmo que pouco, para podermos ajeitar visualizacões seja no mobile ou no desktop. As novas
+    formatacões valem não apenas para tamanho de fonte, mas para qualquer coisa que quiser reescrever. */
+    
+@media (max-width: 600px)
+{
+    :root
+    {
+        font-size: 3.8vw;
+    }
+    
+    /* #container-conteudo h1
+    {
+        font-size: 7rem;
+    }
+
+    #container-conteudo p
+    {
+        font-size: 4rem;
+    } */
+}
+
+

@@ -1,0 +1,94 @@
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+
+::root
+    font-size: 1vw
+
+body
+
+    #container-conteudo
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        height: 50vh
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+    #container-dropdown
+        display: flex
+        margin-top: 3%
+        justify-content: space-around
+        width: 100%
+        max-width: 900px
+
+    
+        
+        .dropdown
+            position: relative
+
+            .menu-name
+                padding: 15% 20% 15% 20%  
+                background-color: white
+                border: 1px solid rgba(00,00,00, .4 )
+                border-radius: 5px
+                font-weight: 700
+                font-size: 1rem
+                position: relative
+                border: 2px solid black
+                width: 100%
+                display: flex
+                justify-content: space-evenly
+
+                .fa-angle-down
+                    margin-left: 15%
+            
+            .menu-name:hover
+                cursor: pointer
+                
+            .menu-list
+                display: flex
+                list-style: none
+                flex-direction: column
+
+                position: absolute
+                right: 0
+                margin-top: 10%
+
+                border: 2px solid black
+
+
+                font-size: 1.2rem
+
+                border-radius: 5px
+
+
+                width: 200%
+                padding: 5%
+
+                opacity: 0
+                transform: scale(0)
+                transition-duration: .5s
+                transition-delay: .2s
+
+                .list-item
+                    margin: 1% 0 1% 0  
+                    text-align: left
+                    padding: 5%
+                    transition: .3s
+
+                .list-item:hover
+                    background-color: #008080
+                    color: white
+
+        .dropdown:hover .menu-list
+            
+            cursor: pointer
+            opacity: 1
+            transform: scale(1)
+
+
+
+
+            

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/index.js"></script>
+
+    <title> AddEventListener </title>
+</head>
+<body>
+
+    <!-- Container da nossa navbar  -->
+    <nav class="container-navbar">
+       
+        <!-- Nossa lista que será transformada em uma navbar -->
+        <ul class="navbar">
+
+            <!-- LI que será transformado em um navbar-item: Nele quando clicarmos,  o dropdown será exibido.
+                Passamos o id do dropdown como parâmetro para que a funcão saiba qual exibir. -->
+            <li onclick="dropdownChange(1)" class="navbar-item"> videos 
+                
+                <!-- lista que será convertida para nosso dropdown: possui a subclasse indicando o estado default dela. -->
+                <ul  id="1" class="dropdown dropdown-closed">
+                    <li class="dropdown-item"> MP4</li>
+                    <li class="dropdown-item"> MP3</li>
+                    <li class="dropdown-item">MKV</li>
+                </ul>
+            </li>
+
+            <li onclick="dropdownChange(2)" class="navbar-item"> fotos 
+                <ul   id="2" class="dropdown dropdown-closed">
+                    <li class="dropdown-item"> JPEG</li>
+                    <li class="dropdown-item"> JPG</li>
+                    <li class="dropdown-item"> PNG</li>
+                </ul>
+            </li>
+
+            <li  onclick="dropdownChange(3)" class="navbar-item"> musicas 
+                <ul  id="3" class="dropdown dropdown-closed">
+                    <li class="dropdown-item"> MP4</li>
+                    <li class="dropdown-item"> MP3</li>
+                </ul>
+            </li>
+        </ul>
+
+    </nav>
+</body>
+</html>

@@ -1,0 +1,171 @@
+/* O probelma:
+
+O primeiro container-box eu quero que tenha 2 caixas, sendo a 
+primeira ocupando 2 vezes mais que a segunda, quero a página 
+com um título "Questão de flexbox", quero que o terceiro container
+tenha 6 caixas, sendo o container com quebra de linha e de uma 
+maneira que fique sempre duas caixas por linha. Não esquecer que:
+os containers devem estar alinhados no meio, um embaixo do outro,
+com uma margem legal. O segundo container eu quero com 4 caixas,
+sendo uma pegando menos espaço que a outra, quando eu diminuir a 
+página, da direita para a esquerda ( sendo a caixa mais a esquerda
+a que ocupa menos espaço ) .*/
+
+/* reset */
+*
+{
+    padding: 0em;
+    margin: 0em;
+    box-sizing: border-box;
+}
+/* raiz */
+:root
+{
+    font-size: 1vw;
+    font-family: Arial, Helvetica, sans-serif;   
+}
+
+/* config do container do conteúdo */
+
+/* primeiro problema, alinhamento do conteúdo */
+#container-conteudo
+{
+    /* display flex para organizarmos tudo */
+    display: flex;
+
+    /* direcão do container para alinhamento ao meio */
+    flex-direction: column;
+
+    /* alinhando ao meio */
+    align-items: center;
+
+    /* margem legal */
+    margin-top: 2%;
+
+    /* cor para o fundo ficar bonitinho */
+    background-color: #033131;
+
+    /* cor das letras */
+    color: white;
+}
+
+h1
+{
+    margin-top: 2%;
+}
+
+/* flex container - confgs gerais */
+.flex-container
+{
+    display: flex;
+
+    margin: 2% 0 2% 0;
+    width: 100%;
+    max-width: 900px;
+ 
+    background-color: white;
+    color: white;
+}
+
+/* config geral das caixas */
+.box
+{
+    padding: 2%;
+    flex-basis: 100px;
+}
+
+/* segundo problema problema: 
+
+'O primeiro container-box eu quero que tenha 2 caixas, 
+sendo a primeira ocupando 2 vezes mais que a segunda'  */
+
+/* usamos flex-grow para especificar como os elementos irão ocupar 
+    o espaco disponível no container */
+#b1q1
+{
+    background-color: blue;
+    flex-grow: 2;
+}
+
+#b2q1
+{
+    background-color: yellow;
+    flex-grow: 1;
+}
+
+/* terceiro problema */
+
+/* sub-nomenclatura criada para ajustar o tamanho mínimo dos elementos */
+.q2
+{
+    /* 900/4 = 225  */
+    flex-basis: 225px;
+}
+
+/* usamos flex-shrink para definirmos o comportamento dos elementos quando
+    o container 'encolher'/diminuir */
+
+#b1q2
+{
+    background-color: blue;
+    flex-shrink: 4;
+}
+#b2q2
+{
+    background-color: yellow;
+    flex-shrink: 3;
+
+}
+#b3q2
+{
+    background-color: green;
+    flex-shrink: 2;
+
+}
+#b4q2
+{
+    background-color: purple;
+    flex-shrink: 1;
+}
+
+/* quarto problema */
+
+/* classe criada para mudar a propriedade default do container */
+.c3
+{
+    /* usamos flex-wrap para definirmos que será permitida a quebra de linhas */
+    flex-wrap: wrap;
+}
+
+/* outra sub-nomenclatura para definirmos o tamanho dos elementos */
+.q3
+{
+    flex-basis: 50%;
+}
+
+#b1q3
+{
+    background-color: blue;
+}
+#b2q3
+{
+    background-color: yellow;
+}
+#b3q3
+{
+    background-color: green;
+}
+#b4q3
+{
+    background-color: purple;
+}
+#b5q3
+{
+    background-color: pink;
+}
+#b6q3
+{
+    background-color: red;
+}
+
+
