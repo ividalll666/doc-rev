@@ -8,13 +8,14 @@
 /* raiz */
 :root
 {
-    font-size: 1vw;
+    font-size: 2vw;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* abaixo serão aplicados as formatacões para os respectivos elementos, normal.
-    Mas se diminuirmos a página para visualizacão pro celular, a letra ficará desproporcionalmente
-    pequena, ou seja, teremos que ajeitar. */
+/* Abaixo serão aplicados as formatacões para os respectivos elementos, normal.
+    O problema, é que se diminuirmos a página ao máximo, ou se formos visualizá
+    _la nos celulares, o tamanho da letra ficará muito pequena, compromentendo 
+    a boa leitura que nas grandes telas nos é proporcionado.*/
 
 #container-conteudo
 {
@@ -37,29 +38,35 @@
     margin-bottom: 1%;
 }
 
-/*  Podemos ajeitar facilmente com Media Querys, ela nos dá a oportunidade
-    de reescrever o estilo e mudar somente o necessário. Uma folha de estilo 
-    bem escrita faz com que a visualizacão em praticamente qualquer coisa seja
-    bem vista, precisando de pequenos ajustes em dispositivos móveis ou tablets.
+/*  
+    Podemos ver que definimos no :root um view width de 1 (1vw), então iremos mult
+    _iplicar esse tamanho pela medida Rem. 1rem com 1vw dá aproximadamente 16px.
+    O tamanho ficará proporcional independente do tamanho da página, pois o Rem 
+    multiplica o numero que definimos pelo font-size do :root.
     
-    Quando se faz um css desleixado, sem prestar atencão em tudo, esses ajustes serão bem trabalhosos
-    podendo até levar a reescritura quase que completa da formatacão da página. Por 
-    conta disso, devemos usar propriedades responsivas e de fácil formatacão, mesmo
-    que elas tenham uma curva de aprendizado maior por ter mais 'sub-propriedades'.
+    Quando se faz um css desleixado, sem prestar atencão em tudo, esses ajustes
+    serão bem trabalhosos podendo até levar a reescritura quase que completa 
+    da formatacão da página. Por conta disso, devemos usar propriedades res
+    _ponsivas e de fácil formatacão, mesmo que elas tenham uma curva de apren
+    _dizado maior por ter mais 'sub-propriedades'.
+
+    Iremos ajeitar o problema das pequenas telas facilmente com Media Querys.
+    Elas nos dão a oportunidade de reescrever o estilo e mudar somente o necessário. 
+    Uma folha de estilo  bem escrita faz com que a visualizacão em praticamente qualquer
+    coisa seja bem vista, precisando de pequenos ajustes em dispositivos móveis ou tablets.
     
-    Como definimos no :root um view width de 1, e depois multiplicamos esse tamanho pela medida Rem, 
-    o tamanho ficou proporcional independente do tamanho da página, isso é bom até antes de chegar nos mobiles,
-    já que o mobile as telas são pequenas demais, tornando as letras pequenas demais. 
+    Temos duas opcões: ou re-multiplicamos os parágrafos com uma nova medida
+    (parte comentada) ou aumentamos o vw do root, criando um novo root. Definimos
+    o @media, e as especificacões de onde devem ser aplicado essas novas configura
+    _cões. Normalmente os celulares possuem tamanho menor de 600px.
     
-    Temos duas opcões: ou re-multiplicamos os parágrafos com uma nova medida(parte comentada)
-    ou aumentamos o vw do root, criando um novo root. Definimos o @media, e as especificacões
-    de onde devem ser aplicado essas novas configuracões. Normalmente os celulares possuem tamanho menor de 600px.
+    Aumentando o font-size do :root, ele pegará esse novo vw definido e aplicará nas 
+    configuracões anteriores, de cada parágrafo. Antes, o H1 possuia um tamanho de
+    3.8em * 1vw. Agora o mesmo parágrafo tem o tamanho de 3.8em * por 3.8vw.
     
-    Aumentando o font-size do :root, ele pegará esse novo vw definido e aplicará nas configuracões anteriores, de cada parágrafo.
-    Antes, o H1 possuia um tamanho de 3.8em * 1vw. Agora o mesmo parágrafo tem o tamanho de 3.8em * por 3.8vw.
-    
-    Media querys praticamnete sempre serão usadas, mesmo que pouco, para podermos ajeitar visualizacões seja no mobile ou no desktop. As novas
-    formatacões valem não apenas para tamanho de fonte, mas para qualquer coisa que quiser reescrever. */
+    Media querys praticamente sempre serão usadas, mesmo que pouco, para poder
+    _mos ajeitar visualizacões seja no mobile ou no desktop. As novas formatacões valem
+    não apenas para tamanho de fonte, mas para qualquer coisa que quisermos reescrever. */
     
 @media (max-width: 600px)
 {
@@ -67,16 +74,10 @@
     {
         font-size: 3.8vw;
     }
-    
-    /* #container-conteudo h1
-    {
-        font-size: 7rem;
-    }
 
-    #container-conteudo p
-    {
-        font-size: 4rem;
-    } */
+    /* faca o teste com esse media query comentado e depois descomentado. Veja a visualiza
+    _cão para celulares apertando CTRL +  SHIFT + I e clicando no símbolo que parece um celular
+    e um tablet um ao lado do outro no topo da tela que vai abrir */
 }
 
 

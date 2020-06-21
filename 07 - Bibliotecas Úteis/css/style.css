@@ -1,3 +1,28 @@
+/*
+    Bibliotecas úteis:
+
+    Fazer todo o trabalho na mão é algo que pode tomar bastante tempo. Para isso, podemos
+    contar com algumas bibliotecas que nos adiantam e preparam um pouco do terreno para
+    que possoamos focar em estilizar o que é mais importante. Isso nos poupa tempo nos ajudan
+    _do a construir o site mais rápido. Por enquanto, ainda não iremos pro Bootstrap, mas sim, ver
+    algumas biblioetcas que coma ajuda do JS, podem nos trazer funcões muito interessantes.
+
+    A primeira delas é a slick.js. É uma biblioteca que nos ajuda a organizar o nosso carousel. É
+    muito simples usá-la, e nos poupa bastante trabalho. Algumas vezes devemos mudar algumas
+    coisinhas como cores e talvez tamanhos no documento fonte, mas mesmo assim, ela dá uma
+    bela ajuda na hora de montar nossa galeria.
+
+    Uma outra biblioteca muito legal é a Animateonscroll.js. Ela faz animacões bem legais ao rolar
+    a página, e nos dá a oportunidade de ver nosso conteúdo carregar de forma bonita e interessan-
+    _te. Ela é super fácil de usar também, e não precisa de muito esforco e nem demora para fazer
+    tudo funcionar, além de ter diversas opcões de escolha de animacão.
+
+    Vamos ver primeiro como funciona o Slick.js. Um carousel é basicamente uma galeria, seja ela de
+    fotos ou de texto. Essa galeria se dá, geralmente, com um conteúdo principal sendo mostrado, en
+    _quanto os outros ficam ocultos ou minimizados.
+*/
+
+/* reset */
 *
 {
     padding: 0;
@@ -5,11 +30,14 @@
     box-sizing: border-box;
 }
 
+/* raiz */
 :root
 {
     font-size: 1vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* container que engloba todo o conteúdo da página */
 #container-conteudo
 {
     display: flex;
@@ -18,6 +46,7 @@
     padding: 5% 0 5% 0;
     font-size: 2rem;
     background-color: #008080;
+
 }
 
 #container-conteudo h1
@@ -27,9 +56,11 @@
     margin-bottom: 3%;
 }
 
+/* Container que englobará nosso carousel. Inclui elementos fora do caroussel propriamente
+    dito, como seu título, descricão, etc. */
 .container-carousel
 {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.363);
     max-width: 900px;
     width: 100%;
     padding: 3%;
@@ -39,31 +70,90 @@
     border-radius: 10px;
 }
 
+.container-carousel p
+{
+    margin-bottom: 3%;
+}
+
+/* coloquei esse nome para ficar didático, mas pode ser qualquer um. Trata-se
+    do container que ficará os conteúdos do carousel.
+
+    Quanto ao CSS não devemos fazer muita coisa, apenas formatar levemente,
+    o conteúdo a ser realmente introduzido está no HTML. */
+
 .carousel
 {
     width: 80%;
     padding: 3%;
-    background-color: #E0F2F1;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /* background-color: #E0F2F1; */
 }
 
+/* Essas são as caixas de texto dentro do carrousel, cada caixa ela possui essas especi
+    _ficacões abaixo, e cada uma tem seu texto específico. */
 .box
 {
-    
-    margin: 3% 0 3% 0;
     padding: 3%;
+    height: 40vh;
     cursor: grab;
     border-radius: 15px;
+    background: white;
+    font-size: 2rem;
+    position: relative;
 }
 
+/* autor */
 .p2
 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-top: 5%;
     text-align: right;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    z-index: 10;
+    color: black;
 }
 
+/* Agora iremos ver o Animate on Scroll. */
+
+#container-animatescroll
+{
+    margin-top: 5%;
+    color: black;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    width: 100%;
+    padding: 3%;
+
+    background: rgba(255, 255, 255, 0.363);
+
+    margin-bottom: 20%;
+}
+
+#container-animatescroll p
+{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+/* isso serve para só ser aplicado uma margem a esquerda apenas se
+    já houver um elemento a direita */
+.ex + .ex
+{
+    margin-left: 3%;
+}
+
+/* box dos exemplos */
+.ex
+{
+    background: white;
+    padding: 3%;
+}
+
+/* como pode ver, cada caixa aparece conforme damos scroll na página de 
+uma forma diferente, isso garante efeitos bem legais.
+
+    Mais explicacões no HTML.*/

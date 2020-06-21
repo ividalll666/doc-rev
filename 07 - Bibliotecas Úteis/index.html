@@ -2,65 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- meu css -->
     <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="css/slick/slick.css">
-    <link rel="stylesheet" href="css/slick/slick-theme.css">
-    <script src="https://kit.fontawesome.com/782e4cfd7d.js" crossorigin="anonymous"></script>
+    <!-- css do slick -->
+    <link rel="stylesheet" href="slick/slick.css">
+    <link rel="stylesheet" href="slick/slick-theme.css">
+
+    <!-- css e js do aos -->
+    <link rel="stylesheet" href="aosfolder/aos.css">
+    <script src="aosfolder/aos.js"></script>
 
     <title> Bibliotecas </title>
 </head>
 <body>
 
+    <!--  container que engloba tudo -->
     <section id="container-conteudo">
 
         <h1> Estudo de bibliotecas </h1>
 
-        <div class="container-carousel" >
+        <!-- container do carousel -->
+        <article class="container-carousel" >
 
+             <!-- título do mesmo -->
             <p> Biblioteca Slick - carousel</p>
 
+                <!-- carousel e seus conteudos: prestar atencão nesse nome -->
                 <div class="carousel">
+
+                    <!-- cada div será um conteúdo no carousel a ser mostrado. -->
+                    <div class="box">
+                        <p class="p1"> Lorem ipsum dolor, Fugiat maxime numquam eos vitae!</p>
+                        <p class="p2"> Author: Unkown</p>
+                    </div>
 
                     <div class="box">
                         <p class="p1"> Lorem ipsum dolor, Fugiat maxime numquam eos vitae!</p>
                         <p class="p2"> Author: Unkown</p>
                     </div>
+
                     <div class="box">
                         <p class="p1"> Lorem ipsum dolor, Fugiat maxime numquam eos vitae!</p>
                         <p class="p2"> Author: Unkown</p>
                     </div>
+
                     <div class="box">
                         <p class="p1"> Lorem ipsum dolor, Fugiat maxime numquam eos vitae!</p>
                         <p class="p2"> Author: Unkown</p>
                     </div>
-                    <div class="box">
-                        <p class="p1"> Lorem ipsum dolor, Fugiat maxime numquam eos vitae!</p>
-                        <p class="p2"> Author: Unkown</p>
-                    </div>
+
                     <div class="box">
                         <p class="p1"> Lorem ipsum dolor, Fugiat maxime numquam eos vitae!</p>
                         <p class="p2"> Author: Unkown</p>
                     </div>
 
                 </div>        
-        </div>
+            </article>
+
+            <!-- container do AOS -->
+            <article id="container-animatescroll" id="aos">
+
+                <p> Desca a página </p>
+            
+                <!-- como pode ver, ao lado da classe temos o nome referente a animacão que queremos 
+                que seja aplicada a cada caixa. No site deles você pode ver todas elas. -->
+
+                <div class="ex" data-aos="fade-up"   > ex  1</div>
+                <div class="ex" data-aos="fade-down"  > ex  2</div>
+                <div class="ex" data-aos="zoom-in"    > ex  3</div>
+                <div class="ex" data-aos="zoom-out"   > ex  4</div>
+                <div class="ex" data-aos="zoom-in-out"> ex  5</div>   
+
+            </article>
 
     </section>
 
-
+<!-- CDN necessário para que tudo funcione, SEMPRE COLOQUE NO FINAL DO CÓDIGO -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="js/slick/slick.js"></script>
 
+<!-- script do slick, colocar no final do código faz com que funcione melhor -->
+<script src="slick/slick.js"></script>
+
+<!-- inicializacão do slick -->
 <script>
     $(document).ready(function()
     {
         $('.carousel').slick({
-            dots: true, autoplay: false
+            //aqui dentro podemos mudar algumas configs, como dar autoplay ou não,  
+            //ou ativar e desativas os pontos de navegacão, a demora das fotos passarem etc
+            dots: true, autoplay: true
         });
     });
 </script>
 
+<!-- script de inicializacão do AOS. Dentro também podemos mexer em algumas configs -->
+<script>
+    AOS.init(
+        {
+            //coloquei bem lento para vermos as diferentes animacões, sugiro que mude o valor
+            duration: 3000,
+            delay: 500
+        }
+    );
+</script>
+
+<!-- caso o AOS não funcione, tire de tela cheia e coloque de novo, o navegador pode ter bugado. Acontece. -->
+
+
+<!--  Algumas coisas podem exigir que reestilizemos dependendo do tamanho do navegador, o que é normal.
+    Nada que uma breve Media Query não resolva. -->
 </body>
 </html>

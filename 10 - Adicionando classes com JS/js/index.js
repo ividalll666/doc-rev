@@ -23,3 +23,4 @@ function dropdownChange(number)
         btn.classList.add("dropdown-openned");
     }
 }
+

@@ -2,12 +2,12 @@
     Pasta sobre Pseudo-elementos:
 
     Os pseudo elementos são muito usados para criar um comportamento específico quando
-    determinada acão ocorrer. Temos, por exemplo: Hover, before, focus, active, visited
-    e muito mais. Podemos mudar a cor de um link vistado com (:visited), mudar a cor de
-    uma searchbar com :focus, fazer uma imagem expandir quando o mouse estiver em cima 
-    dela (:hover) ou criar algumas animacões em conjunto com o :before. Esse são alguns 
-    exemplos do que podemos fazer com os pseudo-elementos: Eles servem para criar peque
-    _nas interacões entre o usuário e a página. Veremos alguns exemplos.  
+    determinada acão ocorrer. Temos, por exemplo: Hover, before, focus, active, visited e muito
+    mais. Podemos mudar a cor de um link vistado com (:visited), mudar a cor de uma searchbar
+    com :focus, fazer uma imagem expandir quando o mouse estiver em cima dela (:hover) ou 
+    criar algumas animacões em conjunto com o :before. Esse são alguns exemplos do que pode
+    _mos fazer com os pseudo-elementos: Eles servem para criar pequenas interacões entre o usu
+    _ário e a página. Veremos alguns exemplos.  
 */
 
 /* reset */
@@ -91,7 +91,17 @@
     background-color: #008080;
     width: 70%;
     color: white;
+}
 
+/* pseudo-elemento que muda a cor do placeholder do input */
+#ex1::placeholder
+{
+    color: black;
+}
+
+#ex1:focus::placeholder
+{
+    color: white;
 }
 
 /* ------------ próximo exemplo ----------- */
@@ -115,11 +125,11 @@
     text-decoration: none;
 }
 
+/* Quando passarmos o mouse no link ele mudará para vermelho */
 .link:hover
 {
     color: red;
     text-decoration: underline;
-
 }
 
 
@@ -147,8 +157,6 @@
     flex-wrap: wrap;
 }
 
-
-
 /* botão config */
 .btn
 {
@@ -173,8 +181,8 @@
 
     width: 100%;
 
+    /* mudará o mouse quando colocarmos ele no botão */
     cursor: pointer;
-
 }
 
 /* pseudo-elemento "before" que define o elemnto decorativo ao nosso botão: aqui 
